@@ -1,0 +1,7 @@
+\renewcommand\familydefault{\sfdefault} % Default family: serif
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{arrows.meta,arrows}
+\usepackage[simplified]{pgf-umlcd} 
+\begin{document}

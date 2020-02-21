@@ -1,0 +1,16 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}
+	\begin{class}[text width=7cm]{Hand}{0,0}
+		\attribute{\emph{attributes would go here}}
+		\operation{\emph{operations would go here}}
+	\end{class}
+	\begin{class}{Person}{11, 0}
+		\attribute{\emph{attributes would go here}}
+		\operation{\emph{operations would go here}}
+	\end{class}
+	\association{Hand}{Belongs}{0..1}{Person}{0..*}{Possesses}
+\end{tikzpicture}
+
+\end{document}

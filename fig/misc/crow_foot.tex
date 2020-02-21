@@ -1,0 +1,196 @@
+\documentclass[border=20pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{%
+	chains,
+	calc
+}
+\tikzset{
+	dummy/.style={
+		rectangle,
+		rounded corners,
+		draw=white, very thick,
+		text centered},
+	zig zag to/.style={
+		to path={(\tikztostart) -| ($(\tikztostart)!#1!(\tikztotarget)$) |- (\tikztotarget) \tikztonodes}
+	},
+	zig zag to/.default=0.5,
+	one to one/.style={
+		one-one, zig zag to
+	},
+	one to none/.style={
+		one-, zig zag to
+	},    
+	oone to none/.style={
+		oone-, zig zag to
+	},    
+	omany to none/.style={
+		omany-, zig zag to
+	},    
+	one to many/.style={
+		one-crow's foot, zig zag to,
+	},
+	one to omany/.style={
+		one-omany, zig zag to
+	},      
+	many to one/.style={
+		crow's foot-one, zig zag to
+	},
+	many to many/.style={
+		crow's foot-crow's foot, zig zag to
+	}, 
+	many to none/.style={
+	crow's foot-, zig zag to
+	}
+}    
+\makeatletter
+\pgfarrowsdeclare{crow's foot}{crow's foot}
+{
+	\pgfarrowsleftextend{+-.5\pgflinewidth}%
+	\pgfarrowsrightextend{+.5\pgflinewidth}%
+}
+{
+	\pgfutil@tempdima=0.6pt%
+	%\advance\pgfutil@tempdima by.25\pgflinewidth%
+	\pgfsetdash{}{+0pt}%
+	\pgfsetmiterjoin%
+	\pgfpathmoveto{\pgfqpoint{0pt}{-9\pgfutil@tempdima}}%
+	\pgfpathlineto{\pgfqpoint{-13\pgfutil@tempdima}{0pt}}%
+	\pgfpathlineto{\pgfqpoint{0pt}{9\pgfutil@tempdima}}%
+	\pgfpathmoveto{\pgfqpoint{0\pgfutil@tempdima}{0\pgfutil@tempdima}}%
+	\pgfpathmoveto{\pgfqpoint{-8pt}{-6pt}}% 
+	\pgfpathlineto{\pgfqpoint{-8pt}{-6pt}}%  
+	\pgfpathlineto{\pgfqpoint{-8pt}{6pt}}% 
+	\pgfusepathqstroke%
+}
+
+\pgfarrowsdeclare{omany}{omany}
+{
+	\pgfarrowsleftextend{+-.5\pgflinewidth}%
+	\pgfarrowsrightextend{+.5\pgflinewidth}%
+}
+{
+	\pgfutil@tempdima=0.6pt%
+	%\advance\pgfutil@tempdima by.25\pgflinewidth%
+	\pgfsetdash{}{+0pt}%
+	\pgfsetmiterjoin%
+	\pgfpathmoveto{\pgfqpoint{0pt}{-9\pgfutil@tempdima}}%
+	\pgfpathlineto{\pgfqpoint{-13\pgfutil@tempdima}{0pt}}%
+	\pgfpathlineto{\pgfqpoint{0pt}{9\pgfutil@tempdima}}%
+	\pgfpathmoveto{\pgfqpoint{0\pgfutil@tempdima}{0\pgfutil@tempdima}}%  
+	\pgfpathmoveto{\pgfqpoint{0\pgfutil@tempdima}{0\pgfutil@tempdima}}%
+	\pgfpathmoveto{\pgfqpoint{-6pt}{-6pt}}% 
+	\pgfpathcircle{\pgfpoint{-11.5pt}{0}} {3.5pt}
+	\pgfusepathqstroke%
+}
+
+\pgfarrowsdeclare{oone}{oone}
+{
+	\pgfarrowsleftextend{+-.5\pgflinewidth}%
+	\pgfarrowsrightextend{+.5\pgflinewidth}%
+}
+{
+	\pgfutil@tempdima=0.6pt%
+	%\advance\pgfutil@tempdima by.25\pgflinewidth%
+	\pgfsetdash{}{+0pt}%
+	\pgfsetmiterjoin%
+	\pgfpathmoveto{\pgfqpoint{0\pgfutil@tempdima}{0\pgfutil@tempdima}}%
+	\pgfpathmoveto{\pgfqpoint{-6pt}{-6pt}}% 
+	\pgfpathlineto{\pgfqpoint{-6pt}{-6pt}}%  
+	\pgfpathlineto{\pgfqpoint{-6pt}{6pt}}% 
+	\pgfpathcircle{\pgfpoint{-11.5pt}{0}} {3.5pt}
+	\pgfusepathqstroke%
+}
+
+\pgfarrowsdeclare{one}{one}
+{
+	\pgfarrowsleftextend{+-.5\pgflinewidth}%
+	\pgfarrowsrightextend{+.5\pgflinewidth}%
+}
+{
+	\pgfutil@tempdima=0.6pt%
+	%\advance\pgfutil@tempdima by.25\pgflinewidth%
+	\pgfsetdash{}{+0pt}%
+	\pgfsetmiterjoin%
+	\pgfpathmoveto{\pgfqpoint{0\pgfutil@tempdima}{0\pgfutil@tempdima}}%
+	\pgfpathmoveto{\pgfqpoint{-6pt}{-6pt}}% 
+	\pgfpathlineto{\pgfqpoint{-6pt}{-6pt}}%  
+	\pgfpathlineto{\pgfqpoint{-6pt}{6pt}}% 
+	\pgfpathmoveto{\pgfqpoint{0\pgfutil@tempdima}{0\pgfutil@tempdima}}%
+	\pgfpathmoveto{\pgfqpoint{-8pt}{-6pt}}% 
+	\pgfpathlineto{\pgfqpoint{-8pt}{-6pt}}%  
+	\pgfpathlineto{\pgfqpoint{-8pt}{6pt}}%    
+	\pgfusepathqstroke%
+}
+   \pgfarrowsdeclare{oone}{oone}
+{
+	\pgfarrowsleftextend{+-.5\pgflinewidth}%
+	\pgfarrowsrightextend{+.5\pgflinewidth}%
+}
+{
+	\pgfutil@tempdima=0.6pt%
+	%\advance\pgfutil@tempdima by.25\pgflinewidth%
+	\pgfsetdash{}{+0pt}%
+	\pgfsetmiterjoin%
+	\pgfpathmoveto{\pgfqpoint{0\pgfutil@tempdima}{0\pgfutil@tempdima}}%
+	\pgfpathmoveto{\pgfqpoint{-6pt}{-6pt}}% 
+	\pgfpathlineto{\pgfqpoint{-6pt}{-6pt}}%  
+	\pgfpathlineto{\pgfqpoint{-6pt}{6pt}}% 
+	\pgfpathcircle{\pgfpoint{-11.5pt}{0}} {3.5pt}
+	\pgfusepathqstroke%
+}
+    \def\property#1{\node[name=\entityname-#1, every property/.try]{#1};}
+\def\properties{\begingroup\catcode`\_=11\relax\processproperties}
+\def\processproperties#1{\endgroup%
+	\def\propertycode{}%
+	\foreach \p in {#1}{%
+		\expandafter\expandafter\expandafter\gdef\expandafter\expandafter\expandafter\propertycode%
+		\expandafter\expandafter\expandafter{\expandafter\propertycode\expandafter\property\expandafter{\p}\\}%
+	}%
+	\propertycode%
+}  
+
+    
+
+\begin{document}
+
+		\begin{tikzpicture}		
+		\node (a0) {};
+		\node[right=2cm of a0] (b0) {};
+		\draw (b0.west) -- (a0.east);
+		\draw ($(b0) +(-0.4, -0.2)$) -- ($(b0) +(-0.4, 0.2)$);
+		\node[left =1cm of a0]{One};
+
+		\node[ below of = a0] (a1) {};
+		\node[right=2cm of a1] (b1) {};
+		\draw (b1.west) -- (a1.east);
+		\draw ($(b1) +(-0.2, -0.2)$) -- ($(b1) + (-0.5, 0)$) -- ($(b1) +(-0.2, 0.2)$);
+		\node[left =1cm of a1]{Many};
+		
+		\node (meta1) at (4, -0.5) {\(\left.\rule{0cm}{1cm}\right\}\) Only the max.};
+		
+		\node[ below of = a1] (a2) {};
+		\node[right=2cm of a2] (b2) {};
+		\draw[one to none] (b2.west) -- (a2.east);
+		\node[left =1cm of a2]{Exactly one};
+		
+		\node[ below of = a2] (a3) {};
+		\node[right=2cm of a3] (b3) {};
+		\draw[oone to none] (b3.west) -- (a3.east);
+		\node[left =1cm of a3]{Zero or one};
+		
+		
+		\node[ below of = a3] (a4) {};
+		\node[right=2cm of a4] (b4) {};
+		\draw[many to none] (b4.west) -- (a4.east);
+		\node[left =1cm of a4]{One or many};
+	
+		\node[ below of = a4] (a5) {};
+		\node[right=2cm of a5] (b5) {};
+		\draw[omany to none] (b5.west) -- (a5.east);
+		\node[left =1cm of a5]{Zero or many};
+		
+		\node (meta2) at (4, -3.5) {\(\left.\rule{0cm}{2cm}\right\}\) Min. and max.};
+		\end{tikzpicture}
+	
+	
+\end{document}

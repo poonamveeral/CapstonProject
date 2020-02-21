@@ -1,0 +1,67 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}
+	\node (movie) at (0,0){\begin{tabular}{| r l |}
+			\hline
+			\multicolumn{2}{| c |}{\textbf{DRIVER}} \\
+			\hline
+			id       & : String                \\
+			dob      & : Date                  \\
+			name     & : String                \\
+			address  & : Street                \\
+			         & City                    \\
+			\hline
+			getAge() & : Int                   \\
+			\hline
+		\end{tabular}
+	};
+	\node (cdriver) at (8, 1){\begin{tabular}{| r l |}
+			\hline
+			\multicolumn{2}{| c |}{\textbf{COMMERCIAL\_DRIVER}} \\
+			\hline
+			Class & : String                               \\
+			\hline
+		\end{tabular}
+	};
+	%\draw[open diamond-] (movie) -- node[above, pos=0.1]{$0..\star$} node[above, pos=0.9]{$1..1$} (cdriver);
+	\draw[{Triangle[open]}-] (movie) -- %node[above, pos=0.1]{$0..\star$} node[above, pos=0.9]{$1..1$}
+	(cdriver);
+	\node (car) at (9, -2){\begin{tabular}{| r l |}
+			\hline
+			\multicolumn{2}{| c |}{\textbf{CAR}} \\
+			\hline
+			vin   & : String                \\
+			make  & : String                \\
+			year  & : Year                  \\
+			brand & : String                \\
+			\hline
+		\end{tabular}
+	};
+	\draw[-] ($(movie)+(2.5,-0.5)$) -- node[above, pos=0.1]{$0..*$} node[above=0.5em]{POSSESSES} node[above, pos=0.9]{$0..*$} (car);
+	%\draw[-] (movie) -- node[below, pos=0.1]{$0..1$} node[below, pos=0.9]{$0..4$} ($(car)+(-2.5, 0.5)$);
+	\node (seat) at (3.5, -5){\begin{tabular}{| r l |}
+			\hline
+			\multicolumn{2}{| c |}{\textbf{POSSESSION\_HISTORY}} \\
+			\hline
+			date of purchase & : Date                       \\
+			\hline
+		\end{tabular}
+	};
+	\draw[dashed] (seat) -- (3.5, -1.2);
+
+	\node (insu) at (15.5, 2){\begin{tabular}{| r l |}
+			\hline
+			\multicolumn{2}{| c |}{\textbf{CAR\_INSURANCE}} \\
+			\hline
+			policy number  & : String                  \\
+			covered amount & : int                     \\
+			compagny name  & : String                  \\
+			\hline
+		\end{tabular}
+	};
+
+	\draw[diamond -] (car) -- node[below, pos=0.1, right=.2]{$1..1$} node[below, pos=0.9, right=0.2]{$1..\star$} node[below right=0.2]{IS\_COVERED\_BY} (insu);
+\end{tikzpicture}
+
+\end{document}
