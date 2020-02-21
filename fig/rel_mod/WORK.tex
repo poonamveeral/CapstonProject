@@ -1,0 +1,48 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+
+% WORK(Title (PK), Author (FK to AUTHOR.Name))
+% AUTHOR(Name (PK), Email)
+% BOOK(ISBN (PK), Work (FK to WORK.Title), Published, Price)
+% EBOOK(ISBN (PK), Work (FK to WORK.Title), Published, Price)
+
+\Frame(0,0){1}[WORK]{
+	Title/PK,
+	Author/A};
+
+\Frame(0,-2.5){2}[BOOK]{
+	ISBN/PK,
+	Work/A,
+	Published/A,
+	Price/A};
+
+\Frame(10,0){3}[AUTHOR]{
+	Name/PK,
+	Email/A};
+
+\Frame(10,-2.5){4}[EBOOK]{
+	ISBN/PK,
+	Work/A,
+	Published/A,
+	Price/A};
+
+\draw[FK] % From WORK.Author to AUTHOR.Name
+(Name3)++(-0.2,0)  -- ++(0,-.55)  coordinate (inter)
+-- (Author1 |- inter) --++(0, 0.65);
+
+\draw[FK] % From BOOK.Work to WORK.Title
+(Title1)++(0.3,0) -- ++(0,-0.8)  --++(-1, 0)
+--++(0, -2.3)
+coordinate (inter)
+-- (Work2 |- inter) --++(0, 0.7);
+
+\draw[FK] % From EBOOK.Work to WORK.Title
+(Title1)++(-0.1,0) -- ++(0,-0.5)  --++(-1.5, 0)
+--++(0, -3)
+coordinate (inter)
+-- (Work4 |- inter) --++(0, 1.1);
+
+
+\end{tikzpicture}
+\end{document}

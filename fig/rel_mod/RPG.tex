@@ -1,0 +1,68 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+% CLASS(Name (PK), Bonus, Element)
+% CHARACTER(Name (PK), Class (FK to CLASS.Name), XP, LVL)
+% WEAPON(Name (PK), Bonus, Possessed-By (FK to CHARACTER.Name))
+% QUEST(Name (PK), XP)
+% COMPLETED-BY(Character (PK, FK to CHARACTER.Name), Quest (PK, FK to QUEST.Name))
+% SPECIAL-ITEM(Name (P), Quest (FK to QUEST.Name))
+
+\Frame(0,0){1}[CLASS]{
+	Name/PK,
+	Bonus/A,
+	Element/A};
+
+\Frame(0,-2.5){2}[CHARACTER]{
+	Name/PK,
+	Class/A,
+	XP/A,
+	Lvl/A};
+
+\Frame(0,-5){3}[WEAPON]{
+	Name/PK,
+	Bonus/A,
+	Possessed-By/A};
+
+\Frame(8,0){4}[QUEST]{
+	Name/PK,
+	Xp/A};
+
+\Frame(8,-2.5){5}[COMPLETED-BY]{
+	Character/PK,
+	Quest/PK};
+
+\Frame(8,-5){6}[SPECIAL-ITEM]{
+	Name/PK,
+	Quest/A};
+
+
+\draw[FK] % From Class2 to Name1
+(Name1)++(0.1,0) -- ++(0,-.55) -- ++(4,0) coordinate (inter)
+-- (Class2 -| inter) -- ++(0,-0.4) coordinate (inter)
+-- (Class2 |- inter) --++(0, 0.5);
+
+
+\draw[FK] % From Possessed-By3 to Name2
+(Name2)++(-0.1,0) -- ++(0,-.75) -- ++(4.2,0) coordinate (inter)
+-- (Possessed-By3 -| inter) -- ++(0,-0.4) coordinate (inter)
+-- (Possessed-By3 |- inter) --++(0,0.5);
+
+
+\draw[FK] % From Character5 to Name2
+(Name2)++(0.1,0) -- ++(0,-.55) -- ++(3.5,0) coordinate (inter)
+-- (Character5|- inter) --++(0,0.55);
+
+
+\draw[FK] % From Quest5 to Name4
+(Name4)++(-0.1,0) -- ++(0,-.7) -- ++(2.6,0) coordinate (inter)
+-- (Quest5 -| inter) -- ++(0,-0.4) coordinate (inter)
+-- (Quest5 |- inter) --++(0,0.4);
+
+\draw[FK] % From Quest6 to Name4
+(Name4)++(0.1,0) -- ++(0,-.55) -- ++(2.6,0) coordinate (inter)
+-- (Quest6 -| inter) -- ++(0,-0.2) coordinate (inter)
+-- (Quest6 |- inter) --++(0,0.3);
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,65 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+% AUTHOR (FName, LName, ID (PK))
+% AWARD (Name (PK), Year (PK), BookTitle (FK to BOOK.Title), BookDate (FK to BOOK.Date))
+% PUBLISHER (Name (PK), City (PK)))
+% BOOK (Title (PK), Pages, Published (PK), PublisherName (FK to PUBLISHER.Name), PublisherCity (FK to PUBLISHER.City), Author (FK to AUTHOR.ID)};
+
+\Frame(0,0){1}[AUTHOR]{
+	FName/A,
+	LName/A,
+	ID/PK};
+
+\Frame(0,-2.5){2}[PUBLISHER]{
+	Name/PK,
+	City/PK};
+
+\Frame(8,0){3}[AWARD]{
+	Name/PK,
+	Year/PK,
+	BookTitle/A,
+	BookDate/A};
+
+\Frame(8,-2.5){4}[BOOK]{
+	Title/PK,
+	Pages/A,	
+	Published/PK,
+	PublisherName/A,
+	PublisherCity/A,
+	Author/A};
+
+\draw[FK] % From AWARD.BookTitle to BOOK.Title
+(Title4) --++(0, -0.55) -- ++(10.5,0) -- ++(0,2.5)  coordinate (inter)
+-- (BookTitle3 |- inter)  --++(0, 0.65);
+
+\draw[FK] % From AWARD.BookTitle to BOOK.Title
+(Published4) --++(0, -0.35) -- ++(8.5,0) -- ++(0,2.5) coordinate (inter)
+-- (BookDate3 |- inter)  --++(0, 0.45);
+
+\draw[FK] % From BOOK.PublisherName to PUBLISHER.Name
+(Name2) --++(0, -0.95)  coordinate (inter)
+-- (PublisherName4 |- inter)  --++(0, 1.05);
+
+\draw[FK] % From BOOK.PublisherCity to PUBLISHER.City
+(City2) --++(0, -0.75)  coordinate (inter)
+-- (PublisherCity4 |- inter)  --++(0, 0.85);
+
+\draw[FK] % From BOOK.Author to Author.ID
+(ID1) --++(0, -0.75) -- ++(15.5,0) -- ++(0,-1.9) coordinate (inter)
+-- (Author4 |- inter)  --++(0, 0.25);
+
+%\draw[FK] % From PUBLISHER.AUTHOR to AUTHOR.Name
+%(Name1) -- ++(0,-.55) -- ++(6, 0.0) -- ++(0, -2.35) 
+%coordinate (inter) -- (AUTHOR2|- inter)  --++(0, 0.5);
+%
+%\draw[FK] % From BOOK.PUBLISHER to PUBLISHER.Code
+%(Code2) -- ++(0,-.55) 
+%coordinate (inter) -- (PUBLISHER4|- inter)  --++(0, 0.55);
+%
+%\draw[FK] % From BOOK.PUBLISHER to COURSE.Name
+%(Name5) -- ++(0,-.55) -- ++(3, 0.0) -- ++(0, 2.55) 
+%coordinate (inter) -- (Course4|- inter)  --++(0, 0.5);
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,21 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+% NAME(FName, LName, Id(PK))
+% ADDRESS(StreetName (PK), Number (PK), Habitants (FK referencing NAME.Id))
+
+\Frame(0,0){1}[NAME]{
+	FName/A,
+	LName/A,
+	Id/PK};
+
+\Frame(5, 0){2}[ADDRESS]{
+	StreetName/PK,
+	Number/PK,
+	Habitants/A};
+
+\draw[FK] % From Habitants2 to Id1
+(Id1)++(0,0) -- ++(0,-.5) -- ++(-0,0) coordinate (inter)
+-- (Habitants2 |- inter) --++(0,0.6);
+\end{tikzpicture}
+\end{document}

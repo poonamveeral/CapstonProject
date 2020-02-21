@@ -1,0 +1,19 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+% MOVIE(Title (PK), Year)
+% CHARACTER(Name(PK), First_Appearance (FK referencing MOVIE.Title))
+
+\Frame(0,0){1}[MOVIE]{
+	Title/PK,
+	Year/A};
+
+\Frame(5, 0){2}[CHARACTER]{
+	Name/PK,
+	FirstAppearance/A};
+
+\draw[FK] % From Habitants2 to Id1
+(Title1)++(0,0) -- ++(0,-.5) -- ++(-0,0) coordinate (inter)
+-- (FirstAppearance2 |- inter) --++(0,0.6);
+\end{tikzpicture}
+\end{document}

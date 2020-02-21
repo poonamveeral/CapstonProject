@@ -1,0 +1,15 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+% ENT.A(KeyA (PK), Rel(FK referencing Ent.A.KeyA))
+
+\Frame(0,0){1}[ENT.A]{
+	KeyA/PK,
+	Rel/A};
+
+\draw[FK] % From MAPPING.KeyA to ENT.A.KeyA
+(KeyA1)++(0,0) -- ++(0,-.5) -- ++(-0,0) coordinate (inter)
+-- (Rel1 |- inter) --++(0,0.5);
+
+\end{tikzpicture}
+\end{document}

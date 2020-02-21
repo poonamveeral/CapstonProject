@@ -1,0 +1,82 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+%STAR(Id (PK), Name, BirthDate)  
+%MOVIE(Id (PK), Title, Year, Length, Genre)  
+%FEATURE-IN(StarId (PK, FK to STAR.Id), MovieId (PK, FK to MOVIE.Id))  
+%THEATER(Id (PK), Name, Address)  
+%AUDITORIUM(Id (PK), Capacity, Theater (FK to THEATER.Id))  
+%SHOWTIME(Id (PK), MovieId (FK to MOVIE.Id), AuditoriumId (FK to AUDITORIUM.Id), StartTime)  
+%TICKETS(Id (PK), ShowTimeId (FK to SHOWTIME.Id), Price)  
+
+\Frame(0,0){1}[STAR]{
+	Id/PK,
+	Name/A,
+	BirthDate/A};
+
+\Frame(0,-2.5){2}[MOVIE]{
+	Id/PK,
+	Title/A,
+	Year/A,
+	Length/A,
+	Genre/A};
+
+\Frame(0,-5){3}[FEATURE-IN]{
+	StarId/PK,
+	MovieId/PK};
+
+\Frame(8,0){4}[THEATER]{
+	Id/PK,
+	Name/A,
+	Address/A};
+
+\Frame(8,-2.5){5}[AUDITORIUM]{
+	Id/PK,
+	Capacity/A,
+	Theater/A};
+
+\Frame(8,-5){6}[SHOWTIME]{
+	Id/PK,
+	MovieId/A,
+	AuditoriumId/A,
+	StartTime/A};
+
+
+\Frame(8,-7.5){7}[TICKET]{
+	Id/PK,
+	ShowTimeId/A,
+	Price/A};
+
+\draw[FK] % From StarId3 to Id1
+(Id1)++(0.1,0) -- ++(0,-.55) -- ++(-1.1,0) coordinate (inter)
+-- (StarId3 -| inter) -- ++(0,-0.4) coordinate (inter)
+-- (StarId3 |- inter) --++(0, 0.4);
+
+\draw[FK] % From MovieId3 to Id2
+(Id2)++(-0.1,0) -- ++(0,-.75) -- ++(3,0) coordinate (inter)
+-- (MovieId3 -| inter) -- ++(0,-0.4) coordinate (inter)
+-- (MovieId3 |- inter) --++(0,0.4);
+
+\draw[FK] % From Theater5 to Id4
+(Id4)++(0.1,0) -- ++(0,-.55) -- ++(3.5,0) coordinate (inter)
+-- (Theater5 -| inter) -- ++(0,-0.2) coordinate (inter)
+-- (Theater5 |- inter) --++(0,0.3);
+
+\draw[FK] % From MovieId6 to Id2
+(Id2)++(0.1,0) -- ++(0,-.55) -- ++(3.2,0) coordinate (inter)
+-- (MovieId6 -| inter) -- ++(0,-0.4) coordinate (inter)
+-- (MovieId6 |- inter) --++(0,0.5);
+
+\draw[FK] % From AuditoriumId6 to Id5
+(Id5)++(0.1,0) -- ++(0,-.55) -- ++(6,0) coordinate (inter)
+-- (AuditoriumId6 -| inter) -- ++(0,-0.2) coordinate (inter)
+-- (AuditoriumId6 |- inter) --++(0,0.3);
+
+
+\draw[FK] % From ShowTimeId7 to Id6
+(Id6)++(0.1,0) -- ++(0,-.8) -- ++(-.7,0) coordinate (inter)
+-- (ShowTimeId7 -| inter) -- ++(0,-0.2) coordinate (inter)
+-- (ShowTimeId7 |- inter) --++(0,0.3);
+
+\end{tikzpicture}
+\end{document}

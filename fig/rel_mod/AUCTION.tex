@@ -1,0 +1,63 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+% MEMBER (ID (PK), Email, Nickname)
+% SELLER (ID (PK, FK to MEMBER.Id), Rating, BankAccount)
+% BUYER (ID (PK, FK to MEMBER.ID), Payment, Address)
+% ITEM (ID (PK), SoldBy (FK to SELLER.ID), Name, StartingPrice)
+% BID (ID (PK), Price, Timestamp, By (FK to MEMBER.ID), For (FK to ITEM.ID))
+
+\Frame(0,0){1}[SELLER]{
+	ID/PK,
+	Rating/A,
+	BankAccount/A};
+
+
+\Frame(0,-4){2}[BUYER]{
+	ID/PK,
+	Payment/A, 
+	Address/A};
+
+\Frame(4,-2){3}[MEMBER]{
+	ID/PK,
+	Email/A,
+	Nickname/A};
+
+\Frame(8,0){4}[ITEM]{
+	ID/PK,
+	SoldBy/A,
+	Name/A,
+	StartingPrice/A};
+
+\Frame(8,-4){5}[BID]{
+	ID/PK,
+	Price/A,
+	Timestamp/A,
+	By/A,
+	For/A};
+
+
+\draw[FK] % From SELLER.ID to MEMBER.ID
+(ID3)++(0,0) -- ++(0,-2.2)  coordinate (inter)
+-- (ID1 |- inter) --++(0, 0.2);
+
+\draw[FK] % From BUYER.ID to MEMBER.ID
+(ID3)++(-0.15,0) -- ++(0,-0.5)  coordinate (inter)
+-- (ID2 |- inter) --++(0, 2.5);
+
+\draw[FK] % From ITEM.SoldBy to SELLER.ID
+(ID1)++(0.15,0) -- ++(0,-.45)  coordinate (inter)
+-- (SoldBy4 |- inter) --++(0, 0.55);
+
+
+\draw[FK] % From BID.By to MEMBER.ID
+(ID3)++(0.15,0) -- ++(0,-2.2) --++(1, 0)  coordinate (inter)
+-- (By5 |- inter) --++(0, 0.3);
+
+
+\draw[FK] % From BID.For to ITEM.ID
+(ID4) -- ++(0,-2.55) -- ++(5, 0.0) -- ++(0, -1.65) 
+coordinate (inter) -- (For5|- inter)  --++(0, 0.3);
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,20 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+% DESK(Serial(PK), Building, Room)
+% DESK_COLOR(Desk (PK, FK referencing DESK.Serial))
+
+\Frame(0,0){1}[DESK]{
+	Serial/PK,
+	Building/A,
+	Room/A};
+
+\Frame(5, 0){2}[DESK\_COLOR]{
+	Desk/PK,
+	Color/PK};
+
+\draw[FK] % From DESK_COLOR.Desk to DESK.Serial
+(Serial1)++(0,0) -- ++(0,-.5) -- ++(-0,0) coordinate (inter)
+-- (Desk2 |- inter) --++(0,0.5);
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,18 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+% ENT.A(KeyA (PK), FK (FK to ENT.B.KeyB))
+% ENT.B(KeyB (PK))
+
+\Frame(0,0){1}[ENT.A]{
+	KeyA/PK,
+	FK/A};
+
+\Frame(5, 0){2}[ENT.B]{
+	KeyB/PK};
+
+\draw[FK] % From ENT.A.FK to ENT.B.KeyB
+(KeyB2)++(0,0) -- ++(0,-.5) -- ++(-0,0) coordinate (inter)
+-- (FK1 |- inter) --++(0,0.5);
+\end{tikzpicture}
+\end{document}

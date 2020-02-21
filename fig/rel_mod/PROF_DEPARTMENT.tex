@@ -1,0 +1,26 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+% PROF(Login (PK), Name, Department (FK to DEPARTMENT.Code))  
+% DEPARTMENT(Code (PK), Name, Head (FK to PROF.Login))
+
+\Frame(0,0){1}[PROF]{
+	Login/PK,
+	Name/A,
+	Department/A};
+
+\Frame(5, 0){2}[DEPARTMENT]{
+	Code/PK,
+	Name/A,
+	Head/A};
+
+\draw[FK] % From Department1 to Code2
+(Code2)++(0.1,0) -- ++(0,-.5) -- ++(-1,0) coordinate (inter)
+-- (Department1 |- inter) --++(0,0.6);
+
+\draw[FK] % From Head2 to Login1
+(Login1)++(0.1,0) -- ++(0,-1) coordinate (inter)
+-- (Head2 |- inter) --++(0, 1.1);
+
+\end{tikzpicture}
+\end{document}

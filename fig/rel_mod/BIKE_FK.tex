@@ -1,0 +1,51 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+
+% ACTOR(Id (PK), Name, Birthdate)
+% MOVIE(Title (PK), Year, Length, Studio)
+% THEATER(Name (PK), Street, City, State, Zip)
+% ACTING(ActorId (PK, FK to ACTOR.Id), MovieTitle (PK, FK to MOVIE.Title))
+% SHOWING(TheaterName (PK, FK to THEATER.Name), MovieTitle(PK, FK to MOVIE.Title), Day (PK), Time (PK))
+
+\Frame(0,0){1}[CUSTOMER]{
+	Name/PK,
+	Phone/A,
+	AssignedEmployee/A,
+	LevelOfSatisfaction/A};
+
+\Frame(0,-2.5){2}[BIKE]{
+	DroppedTimeDate/PK,
+	Customer/PK,
+	Color/A,
+	Brand/A,
+	RepairedBy/A};
+
+\Frame(10,0){3}[EMPLOYEE]{
+	Name/PK};
+
+\Frame(10,-2.5){4}[SPECIALTY]{
+	Employee/PK,
+	Specialty/PK};
+
+\draw[FK] % From CUSTOMER.AssignedEmployee to EMPLOYEE.Name
+(Name3)++(-0.2,0)  -- ++(0,-.55)  coordinate (inter)
+-- (AssignedEmployee1 |- inter) --++(0, 0.5);
+
+\draw[FK] % From BIKE.Customer to CUSTOMER.Name
+(Name1)++(0.1,0) -- ++(0,-0.5)  --++(-1.5, 0)
+ --++(0, -3)
+coordinate (inter)
+-- (Customer2 |- inter) --++(0, 1);
+
+\draw[FK] % From BIKE.RepairedBy to EMPLOYEE.Name
+(Name3)++(0,0) -- ++(0,-.75)--++(-1, 0) --++(0, -3)
+coordinate (inter)
+-- (RepairedBy2 |- inter) --++(0, 1.3);
+
+\draw[FK] % From SPECIALTY.Employee to EMPLOYEE.Name
+(Name3)++(0.2,0) -- ++(0,-.85)--++(-1, 0) --++(0, -2.9)
+coordinate (inter)
+-- (Employee4 |- inter) --++(0, 1.25);
+\end{tikzpicture}
+\end{document}

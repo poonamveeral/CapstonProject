@@ -1,0 +1,53 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+% PHONE(OwnerId (PK, FK to PERSON.Id), Number (PK))  
+% PERSON(Id (PK), Name, Street, City, Seat (FK to CAR.Vin), Position)
+% CAR(Vin (PK), Make, Year, Brand, Driver (FK to PERSON.Id))
+% CAR INSURANCE(Insured Car (PK, FK to CAR.Vin), Policy Number (PK), Covered Amount, Company Name)
+
+\Frame(0,0){1}[PHONE]{
+	OwnerId/PK,
+	Number/PK};
+
+\Frame(0,-2.5){2}[PERSON]{
+	Id/PK,
+	Name/A,
+	Street/A,
+	City/A,
+	Seat/A,
+	Position/A};
+
+\Frame(0,-5){3}[CAR]{
+	Vin/PK,
+	Make/A,
+	Year/A,
+	Brand/A,
+	Driver/A};
+
+\Frame(0,-7.5){4}[CAR INSURANCE]{
+	Insured Car/PK,
+	Policy Number/PK,
+	Covered Amount/A,
+	Company Name/A};
+
+\draw[FK] % From PHONE.OwnerId to PERSON.Id
+(Id2)++(-0.1,0) -- ++(0,-.55) -- ++(-1,0) -- ++(0,2.5) coordinate (inter)
+-- (OwnerId1 |- inter) -- ++(0, 0.55);
+
+\draw[FK] % From CAR.Driver to PERSON.Id
+(Id2)++(0.1,0) -- ++(0,-.55) -- ++ (5.5, 0)--++(0, -2.1)
+coordinate (inter)
+-- (Driver3 |- inter) -- ++(0, 0.25);
+
+\draw[FK] % From PERSON.Seat to CAR.Vin
+(Vin3)++(0.1, 0) -- ++(0,-.55) -- ++ (6, 0)--++(0, 3)
+coordinate (inter)
+-- (Seat2 |- inter) -- ++(0, 0.15);
+
+\draw[FK] % From CAR INSURANCE.Insured Car to CAR.Vin
+(Vin3)++(-0.1, 0) -- ++(0,-.55) -- ++ (-1, 0)--++(0, -2.1)
+coordinate (inter)
+-- (Insured Car4 |- inter) -- ++(0, 0.15);
+\end{tikzpicture}
+\end{document}

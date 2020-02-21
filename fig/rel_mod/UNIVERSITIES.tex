@@ -1,0 +1,50 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+% UNIVERSITY (Name (PK), Website)
+% CAMPUS (Address (PK), University (FK to UNIVERSITY.Name))
+% DEPARTMENT (Code (PK), Contact, CreationDate, University (FK to UNIVERSITY.Name))
+% COURSE (Name (PK), CreditHours)
+% OFFERING (Department (PK, FK to DEPARTMENT.Name), Course (PK, FK to COURSE.Name), Code)
+
+\Frame(0,0){1}[UNIVERSITY]{
+	Name/PK,
+	Website/A};
+
+\Frame(0,-2.5){2}[DEPARTMENT]{
+	Code/PK,
+	Contact/A,
+	CreationDate/A,
+	University/A};
+
+\Frame(8,0){3}[CAMPUS]{
+	Address/PK,
+	University/A};
+
+\Frame(8,-2.5){4}[OFFERING]{
+	Department/PK,
+	Course/PK,
+	Code/A};
+
+\Frame(8,-5){5}[COURSE]{
+	Name/PK,
+	CreditHours/A};
+
+\draw[FK] % From CAMPUS.University to UNIVERSITY.Name
+(Name1)++(0.15,0) -- ++(0,-.45)  coordinate (inter)
+-- (University3 |- inter) --++(0, 0.55);
+
+\draw[FK] % From DEPARTMENT.University to UNIVERSITY.Name
+(Name1) -- ++(0,-.55) -- ++(6, 0.0) -- ++(0, -2.35) 
+coordinate (inter) -- (University2|- inter)  --++(0, 0.5);
+
+\draw[FK] % From OFFERING.Department to DEPARTMENT.Code
+(Code2) -- ++(0,-.55) 
+coordinate (inter) -- (Department4|- inter)  --++(0, 0.55);
+
+\draw[FK] % From OFFERING.Department to COURSE.Name
+(Name5) -- ++(0,-.55) -- ++(3, 0.0) -- ++(0, 2.55) 
+coordinate (inter) -- (Course4|- inter)  --++(0, 0.5);
+
+\end{tikzpicture}
+\end{document}

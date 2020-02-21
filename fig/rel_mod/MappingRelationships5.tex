@@ -1,0 +1,22 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+% ENT.A(KeyA (PK))
+% REL(KeyA1 (PK, FK referencing Ent.A.KeyA), KeyA2 (FK referencing Ent.A.KeyA))
+
+\Frame(0,0){1}[ENT.A]{
+	KeyA/PK};
+
+\Frame(4, 0){2}[REL]{
+	KeyA1/PK,
+	KeyA2/A};
+
+\draw[FK] % From REL.KeyA to ENT.A.KeyA
+(KeyA1)++(.1,0) -- ++(0,-.5) -- ++(-0,0) coordinate (inter)
+-- (KeyA12 |- inter) --++(0,0.5);
+
+\draw[FK] % From REL.KeyA to ENT.A.KeyA
+(KeyA1)++(-.1,0) -- ++(0,-.8) -- ++(-0,0) coordinate (inter)
+-- (KeyA22 |- inter) --++(0,0.8);
+\end{tikzpicture}
+\end{document}

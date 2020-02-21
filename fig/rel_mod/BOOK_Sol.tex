@@ -1,0 +1,35 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+% AUTHOR(Ref (PK), Name, Address)  
+% BOOK(ISSN (PK), AuthorRef (FK to AUTHOR.REF), Title)  
+% GAINED-AWARD(Ref (PK), Name, BookISSN (FK to BOOK.ISSN), Year)
+
+\Frame(0,0){1}[AUTHOR]{
+	Ref/PK,
+	Name/A,
+	Address/A};
+
+\Frame(0,-2.5){2}[BOOK]{
+	ISSN/PK,
+	AuthorRef/A,
+	Title/A};
+
+\Frame(0,-5){3}[GAINED-AWARD]{
+	Ref/PK,
+	Name/A,
+	BookISSN/A,
+	Year/A};
+
+\draw[FK] % From AuthorRef2 to Ref1
+(Ref1)++(0.1,0) -- ++(0,-.55) -- ++(4.5,0) coordinate (inter)
+-- (AuthorRef2 -| inter) -- ++(0,-0.4) coordinate (inter)
+-- (AuthorRef2 |- inter) --++(0,0.5);
+
+\draw[FK] % From BookISSN3 to ISSN2
+(ISSN2)++(0.1,0) -- ++(0,-.55) -- ++(-1.1,0) coordinate (inter)
+-- (BookISSN3 -| inter) -- ++(0,-0.4) coordinate (inter)
+-- (BookISSN3 |- inter) --++(0,0.5);
+
+\end{tikzpicture}
+\end{document}
