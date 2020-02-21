@@ -1,0 +1,12 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=8em]
+	\node [entity] (PERSON) {PERSON};
+	\node [relationship] (POSSESSES) [right=of PERSON] {POSSESSES} edge node[above]{$1$} (PERSON);
+	\node [entity] (BOOK) [right = of POSSESSES] {BOOK} edge node[above]{$\cN$} (POSSESSES);
+	\node [relationship] (SELLS) [below left = 1cm of BOOK] {SOLD BY} edge node[below right]{$\cM$} (BOOK);
+	\node [entity] (LIBRARY) [below = of POSSESSES] {LIBRARY} edge node[left]{$\cO$} (SELLS);
+	\node [relationship] (VISITS) [below right = 1.8cm of PERSON] {VISITS} edge node[above right]{$\cN$} (LIBRARY) edge node[above right]{$\cO$} (PERSON);
+\end{tikzpicture}
+\end{document}

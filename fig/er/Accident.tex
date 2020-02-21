@@ -1,0 +1,25 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=7em]
+	\node[entity] (person) {Person};
+	\node[attribute] (pid) [left of=person] {\key{id}} edge (person);
+	\node[attribute] (name) [above left of=person] {Name} edge (person);
+	\node[attribute] (address) [below left of=person] {address} edge (person);
+
+	\node[relationship] (owns) [above right of=person] {Owns} edge node[above, sloped]{$M$} (person);
+	\node[entity] (car) [above right of=owns] {Car} edge node[above, sloped]{$N$} (owns);
+	\node[attribute] (licence) [above left of=car] {\key{licence}} edge (car);
+	\node[attribute] (model) [above of =car] {model} edge (car);
+	\node[attribute] (year) [above right of =car] {year} edge (car);
+
+	\node[relationship] (accident) [right = 5cm of person] {Accident} edge[total] node[above, sloped]{$M$} (person);
+	\node[attribute] (report_number) [below of = accident] {\key{Report Number}} edge (accident);
+	\node[attribute] (time) [right of = accident] {Time} edge (accident);
+	\node[attribute] (place) [below right of = accident] {Place} edge (accident);
+	\node[attribute] (damage_amount) [above right of = accident] {Damage\_Amount} edge (accident);
+
+	\draw (car) edge[total] node[above, sloped]{$N$} (accident);
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,10 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=7em]
+	\node[relationship] (contains){CONTAINS};
+	\node[entity] (burger) [left = 1cm of contains] {BURGER} edge[total] node[above] {$N$} (contains);
+	\node[entity] (ingredient) [right = 1cm of contains] {INGREDIENT} edge node[above]{$M$} (contains);
+\end{tikzpicture}
+
+\end{document}

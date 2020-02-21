@@ -1,0 +1,66 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=1.5cm]
+	\node[entity] (INSTITUTION) {INSTITUTION};
+	\node[attribute] [above of=INSTITUTION] {\key{Name}} edge (INSTITUTION);
+	\node[attribute] [right = .5cm of INSTITUTION] {Phone} edge (INSTITUTION);
+	\node[attribute] (Address) [below = .5cm of INSTITUTION] {Address} edge (INSTITUTION);
+	\node[attribute] [left = .5cm of Address] {Street} edge (Address);
+	\node[attribute] [below = .5cm of Address] {Zip} edge (Address);
+	\node[attribute] [below left = .5cm of Address] {City} edge (Address);
+	\node[attribute] (Location) [below right = .5cm of Address] {Location} edge (Address);
+	\node[attribute] [below = .5cm of Location] {Country} edge (Location);
+	\node[attribute] [below right = .5cm of Location] {State} edge (Location);
+	\node[derived attribute] [right = .5cm of Location] {Code} edge (Location);
+	%
+	\node[relationship] (AWARDEDTO) [left = 1.5cm of INSTITUTION] {AWARDED\_TO} edge node[above, pos=0.4] {$\cN$} (INSTITUTION);
+	%
+	\node[entity] (AWARD) [left = 1.5cm of AWARDEDTO] {AWARD} edge[total] node[above, pos=0.6]{$\cM$} (AWARDEDTO);
+	\node[attribute] [below right = .5cm and .5cm of AWARD] {Title} edge (AWARD);
+	\node[attribute] [left = .5cm of AWARD] {Amount} edge (AWARD);
+	\node[attribute] (Period) [below left = .5cm of AWARD] {Period} edge (AWARD);
+	\node[attribute] [below left = .5cm of Period] {Start} edge (Period);
+	\node[attribute] [below = .5cm of Period] {End} edge (Period);	
+	\node[attribute] [above right of = AWARD] {\key{id}} edge (AWARD);
+	\node[attribute] [above = 1cm of AWARD] {Program Officier} edge (AWARD);
+	%
+%	\node[relationship] (EMPLOYS) [below =0.8cm of INSTITUTION] {EMPLOYS} edge node[right, pos=0.4] {$\cN$} (INSTITUTION);
+	%
+	\node[entity] (RESEARCHER) [below  = 5cm of AWARD] {RESEARCHER};
+	
+		\node[attribute] (Name) [left = 0.5cm of RESEARCHER] {Name} edge (RESEARCHER);
+		\node[attribute] [above left = 0.5cm and 0.5cm of Name] {First Name} edge (Name);
+		\node[attribute] [below left = 0.5cm of Name] {Last Name} edge (Name);
+			\node[attribute] [below = 0.5cm of RESEARCHER] {\key{email}} edge (RESEARCHER);
+	
+			\node[relationship] (CONDUCTEDBY) [below = 1 cm of AWARD] {CONDUCTED\_BY} edge[total] node[right, pos=0.4] {$\cM$} (AWARD) edge node[left]{$\cN$} (RESEARCHER);
+		\node[attribute] [right = .5cm of CONDUCTEDBY] {Role} edge (CONDUCTEDBY);	
+
+	\node[attribute] (RePeriod) [right  = .5cm of RESEARCHER] {Period} edge (RESEARCHER);
+	\node[attribute] [above right = .5cm of RePeriod] {Start} edge (RePeriod);
+	\node[attribute] [below right = .5cm of RePeriod] {End} edge (RePeriod);
+
+	\node[entity] (ORGANIZATION) [left = 3cm of AWARD]  {ORGANIZATION};
+	\node[attribute] [below = .5cm of ORGANIZATION] {Code} edge (ORGANIZATION);
+
+		\node[relationship] (GRANTS) [above left = 1cm and 1.5cm of AWARD]  {GRANTS} edge node[above]{$1$} (ORGANIZATION) edge[total] node[above  right]{$\cM$}(AWARD);
+
+		\node[entity] (DIRECTORATE) [left = 1.5cm of ORGANIZATION]  {DIRECTORATE};
+
+	\node[attribute] [below right = .5cm and 0 of DIRECTORATE] {Name} edge (DIRECTORATE);
+	\node[attribute] [below left = .5cm and 0cm of DIRECTORATE] {Abbreviation} edge (DIRECTORATE);
+	\node[attribute] [below = 1.3cm of DIRECTORATE] {Assistant Director} edge (DIRECTORATE);
+
+
+		\node[relationship] (BELONG1) [above left = 1cm and 0cm of ORGANIZATION]  {BELONGS\_TO} edge node[above]{$\cN$} (ORGANIZATION) edge node[above  =0.2cm]{$\cM$}(DIRECTORATE);
+
+		\node[entity] (DIVISION) [left = 1.5cm of DIRECTORATE]  {DIVISION};
+
+	\node[attribute] [left = .5cm of DIVISION] {Name} edge (DIVISION);
+	\node[attribute] [below left  = 1cm of DIVISION] {Abbreviation} edge (DIVISION);
+
+		\node[relationship] (BELONG2) [above left = 1cm and 0cm of DIRECTORATE]  {BELONGS\_TO} edge node[above]{$1$} (DIRECTORATE) edge[total] node[above=0.2cm  ]{$\cM$}(DIVISION);
+\end{tikzpicture}
+
+\end{document}

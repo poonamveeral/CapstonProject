@@ -1,0 +1,22 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=5em]
+	\node[entity] (ALBUM) {ALBUM};
+	\node[attribute] [left = .5cm of ALBUM] {\key{Name}} edge (ALBUM);
+	\node[attribute] (Date) [above of=ALBUM] {Release Date} edge (ALBUM);
+	\node[attribute] [above right of=Date] {Day} edge (Date);
+	\node[attribute] [above = 1.2cm of Date] {Month} edge (Date);
+	\node[attribute] [above left of=Date] {Year} edge (Date);
+
+	\node[ident relationship] (CONTAINS) [right = 1cm of ALBUM] {CONTAINS} edge node[above, pos=0.3] {$1$} (ALBUM);
+	\node[weak entity] (SONG) [right = 1cm of CONTAINS] {SONG} edge[total] node[above, pos=0.7] {$N$} (CONTAINS);
+	\node[attribute] [right = .5cm of SONG] {\pkey{Track Number}} edge (SONG);
+
+	\node[attribute] (Length) [above of =SONG] {Length} edge (SONG);
+	\node[attribute] [above left of =Length] {Hours} edge (Length);
+	\node[attribute] [above =1.3cm of Length] {Minutes} edge (Length);
+	\node[attribute] [above right of =Length] {Seconds} edge (Length);
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,10 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=5em]
+	\node [entity] (CAR) {CAR};
+	\node [relationship] (CARPOOLING) [right=of CAR] {CARPOOLING} edge[total] node[above]{$\cN$} (CAR);
+	\node [entity] (PERSON) [right = of CARPOOLING] {PERSON} edge node[above]{$\cM$} (CARPOOLING);
+\end{tikzpicture}
+
+\end{document}

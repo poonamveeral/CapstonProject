@@ -1,0 +1,11 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=5em]
+	\node [entity] (producer) {PRODUCER};
+	\node [relationship] (produces) [right=of producer] {PRODUCES} edge node[above]{$1$} (producer);
+	\node [entity] (movie) [right = of produces] {MOVIE} edge node[above]{$\cM$} (produces);
+	\node[attribute] (mid) [above of=movie] {Amount\_Given\_By\_Producer} edge (movie);
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,15 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=8em]
+	\node[entity] (FRIEND) {FRIEND};
+	\node[attribute] (make) [below of=FRIEND] {\key{Name}} edge (FRIEND);
+
+	\node[ident relationship] (POSSESSES) [right of=FRIEND] {POSSESSES} edge node[above, pos=0.3] {$1$} (FRIEND);
+	\node[weak entity] (PET) [right = 1cm of POSSESSES] {PET} edge[total] node[above, pos=0.7] {$N$} (POSSESSES);
+	\node[attribute] [below right of =PET] {\pkey{Name}} edge (PET);
+	\node[attribute] [below left of =PET] {Gender} edge (PET);
+	\node[attribute] [below of =PET] {Specie} edge (PET);
+\end{tikzpicture}
+
+\end{document}

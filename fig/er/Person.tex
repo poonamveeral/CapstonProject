@@ -1,0 +1,12 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=7em]
+	\node[entity] (person) {PERSON};
+	\node[attribute] (ssn) [left of=person] {\key{SSN}} edge (person);
+	\node[attribute] (dob) [above of=person] {Date\_Of\_Birth} edge (person);
+	\node[derived attribute] (age) [right of=person] {Age} edge (person);
+\end{tikzpicture}
+
+
+\end{document}

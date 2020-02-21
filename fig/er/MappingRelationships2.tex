@@ -1,0 +1,12 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=7em]
+	\node[relationship] (contains){REL.};
+	\node[entity] (ENTA) [left = 1cm of contains] {ENT. A} edge[total] node[above] {$1$} (contains);
+	\node[attribute] [above of= ENTA] {\key{KeyA}} edge (ENTA);
+	\node[entity] (ENTB) [right = 1cm of contains] {ENT. B} edge[total] node[above]{$1$} (contains);
+	\node[attribute] [above of= ENTB] {\key{KeyB}} edge (ENTB);
+\end{tikzpicture}
+
+\end{document}

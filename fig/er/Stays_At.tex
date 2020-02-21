@@ -1,0 +1,14 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=7em]
+	\node[relationship] (contains){STAYS\_AT};
+	\node[entity] (person) [above = 1cm of contains] {PERSON} edge node[right] {$N$} (contains);;
+	\node[attribute] (ssn) [left of=person] {\key{SSN}} edge (person);
+	\node[attribute] (dob) [above = .5cm of person] {Date\_Of\_Birth} edge (person);
+	\node[entity] (burger) [below of= contains] {PLACE} edge node[right] {$1$} (contains);
+	\node[attribute] (dob) [below = .5cm of burger] {\key{Address}} edge (burger);
+	\node[attribute] (ssn) [left of=burger] {Rooms} edge (burger);
+\end{tikzpicture}
+
+\end{document}

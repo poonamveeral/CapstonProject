@@ -1,0 +1,11 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=7em]
+	\node[entity] (entity) {ENTITY TYPE NAME};
+	\node[attribute] [above left of=entity] {Attribute $1$} edge (entity);
+	\node[attribute] [above right of=entity] {Attribute $n$} edge (entity);
+	\node[above = 3em of entity] {…};
+\end{tikzpicture}
+
+\end{document}

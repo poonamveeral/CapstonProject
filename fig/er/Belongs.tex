@@ -1,0 +1,10 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=7em]
+	\node[relationship] (contains){BELONGS};
+	\node[entity] (burger) [left = 1cm of contains] {HAND} edge node[above] {$N$} (contains);
+	\node[entity] (ingredient) [right = 1cm of contains] {PERSON} edge node[above]{$1$} (contains);
+\end{tikzpicture}
+
+\end{document}

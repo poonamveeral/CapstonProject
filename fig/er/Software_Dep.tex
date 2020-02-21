@@ -1,0 +1,14 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=5em]
+	\node [entity] (SOFTWARE) {SOFTWARE};
+	\node [relationship] (REQUIRES) [above=of SOFTWARE] {REQUIRES};
+	\draw (REQUIRES.east) -- node[right]{Requirement} node[right, pos = 0.8]{$\cN$}  (SOFTWARE);
+	\draw (REQUIRES.west) -- node[left, pos = 0.8]{$\cM$}(SOFTWARE);
+	\node [attribute] (id) [right= .5cm of SOFTWARE] {\key{Id}} edge (SOFTWARE);
+	\node [attribute, above right of = id] {Version} edge (id);
+	\node [attribute, below right of = id] {Name} edge (id);
+\end{tikzpicture}
+
+\end{document}

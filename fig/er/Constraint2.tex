@@ -1,0 +1,10 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=5em]
+	\node [entity] (course) {COURSE};
+	\node [relationship] (offeredby) [right=of course] {OFFERED\_BY} edge[total] node[above]{$\cN$} (course);
+	\node [entity] (department) [right = of offeredby] {DEPARTMENT} edge node[above]{$1$} (offeredby);
+\end{tikzpicture}
+
+\end{document}

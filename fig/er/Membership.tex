@@ -1,0 +1,11 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=5em]
+	\node [entity] (PERSON) {PERSON};
+	\node [relationship] (MEMBERSHIP) [right=of PERSON] {MEMBERSHIP} edge node[above]{$\cM$} (PERSON);
+	\node [entity] (CLUB) [right = of MEMBERSHIP] {CLUB} edge node[above]{$1$} (MEMBERSHIP);
+	\node[attribute] [above of=PERSON] {CLUB\_MEMBERSHIP\_LEVEL} edge (PERSON);
+\end{tikzpicture}
+
+\end{document}

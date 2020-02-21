@@ -1,0 +1,11 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=5em]
+	\node [entity] (person) {PERSON};
+	\node [relationship] (hosts) [above=of person] {HOSTS};
+	\draw (hosts.east) -- node[right]{Guest}  (person);
+	\draw (hosts.west) -- node[left]{Host} (person);
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,15 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=7em]
+	\node [entity] (phone) {PHONE};
+	\node [attribute] [above left of=phone] {Attribute $1$} edge (phone);
+	\node [attribute] [above right of=phone] {Attribute $n$} edge (phone);
+	\node (dots) [above = 3em of phone] {…};
+	\node [relationship] (uses) [right=of phone] {USES} edge[total] node[above]{$\cN$} (phone);
+	\node [attribute] [above of=uses] {Average\_Network\_Quality} edge (uses);
+	\node [entity] (carrier) [right = of uses] {CARRIER} edge node[above]{$1$} (uses);
+	
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,10 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=5em]
+	\node [entity] (os) {O.S.};
+	\node [relationship] (installed) [right=of os] {IS SUPPORTED BY} edge node[above]{$\cN$} (os);
+	\node [entity] (comp) [right = of installed] {COMPUTER} edge[total] node[above]{$\cM$} (installed);
+\end{tikzpicture}
+
+\end{document}

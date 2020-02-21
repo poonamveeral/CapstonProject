@@ -1,0 +1,10 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=5em]
+	\node [entity] (PERSON) {PERSON};
+	\node [relationship] (BOUGHT) [right=of PERSON] {BOUGHT} edge node[above]{$\cM$} (PERSON);
+	\node [entity] [right = of BOUGHT] {BOOK} edge node[above]{$\cN$} (BOUGHT);
+	\node [entity] [below = of BOUGHT] {LIBRARY} edge node[left]{$\cO$} (BOUGHT);
+\end{tikzpicture}
+\end{document}

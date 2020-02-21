@@ -1,0 +1,13 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=7em]
+	\node[entity] (DESK) {DESK};
+	\node[attribute] (pid) [left of=DESK] {\key{Serial}} edge (DESK);
+	\node[multi attribute] [above of=DESK] {Color} edge (DESK);
+	\node[attribute] (Location) [right of=DESK] {Location} edge (DESK);
+	\node[attribute] [above right of=Location] {Building} edge (Location);
+	\node[attribute] [right of=Location] {Room} edge (Location);
+\end{tikzpicture}
+
+\end{document}

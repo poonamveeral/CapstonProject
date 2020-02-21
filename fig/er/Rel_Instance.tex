@@ -1,0 +1,28 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=2em]
+	\draw [fill= gray!20] (0,-1) ellipse (1cm and 2cm) node[above=2]{Entity Set 1};
+	\draw [fill= blue!20] (2.75, -1) ellipse (1cm and 2cm) node[above=2]{Relationship Set 1};
+	\draw [fill= green!20] (5.5, -1) ellipse (1cm and 2cm) node[above=2]{Entity Set 2};
+	%
+	\node (e1) {\(e_1\)};
+	\node (e2) [below of = e1] {\(e_2\)};
+	\node (dots) [below of = e2] {\(\vdots\)};
+	\node (en) [below of = dots] {\(e_n\)};
+	%	
+	\node (c1) [right = 5 of e1]{\(c_1\)};
+	\node (c2) [below of = c1]{\(c_1\)};
+	\node (cdots) [below of = c2] {\(\vdots\)};
+	\node (cp) [below of = cdots] {\(c_p\)};
+	%	
+	\node (r1) [right = 2.25 of e2] {\(r_1\)};
+	\draw (r1) to (e1);
+	\draw (r1) to (c2);
+	%
+	\node (r2) [below of = r1] {\(r_2\)};
+	\draw (r2) to (e2);
+	\draw (r2) to (cp);
+\end{tikzpicture}
+
+\end{document}

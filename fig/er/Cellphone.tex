@@ -1,0 +1,13 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=7em]
+	\node[entity] (cellphone) {CELLPHONE};
+	\node[attribute] (mid) [left of=cellphone] {\key{MIN}} edge (cellphone);
+	\node[multi attribute] (app) [above of=cellphone] {App\_Installed} edge (cellphone);
+	\node[attribute] (plan) [right of=cellphone] {Plan} edge (cellphone);
+	\node[attribute] (carrier) [above right of=plan] {Carrier} edge (plan);
+	\node[attribute] (price) [right of=plan] {Price} edge (plan);
+\end{tikzpicture}
+
+\end{document}

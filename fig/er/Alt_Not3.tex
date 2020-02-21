@@ -1,0 +1,39 @@
+\documentclass[border=20pt]{standalone}
+\input{template.def}
+
+\begin{tikzpicture}[node distance=5em]
+	% Above
+	\node (A) {};
+	\node [relationship] (R) [right=of A] {} edge node[above]{$1$} (A);
+	\node (B) [right = of R] {} edge node[above]{$\cN$} (R);
+	
+	\node (ar) [right of = B] {\(\Rightarrow\)};
+	
+	\node (A1) [right of = ar] {};
+	\node [relationship] (R1) [right=of A1] {} edge node[above]{$(0, \cN)$} (A1);
+	\node (B1) [right = of R1] {} edge node[above]{$(0,1)$} (R1);
+	
+	% Middle
+	\node (A2) [below of = A] {};
+	\node [relationship] (R2) [right=of A2] {} edge[total] node[above]{$1$} (A2);
+	\node (B2) [right = of R2] {} edge node[above]{$\cN$} (R2);
+	
+	\node (ar1) [right of = B2] {\(\Rightarrow\)};
+	
+	\node (A21) [right of = ar1] {};
+	\node [relationship] (R21) [right=of A21] {} edge node[above]{$(1, \cN)$} (A21);
+	\node (B21) [right = of R21] {} edge node[above]{$(0,1)$} (R21);
+	
+	% Below
+	\node (A3) [below of = A2] {};
+	\node [relationship] (R3) [right=of A3] {} edge[total] node[above]{$\cM$} (A3);
+	\node (B3) [right = of R3] {} edge[total] node[above]{$\cN$} (R3);
+	
+	\node (ar2) [right of = B3] {\(\Rightarrow\)};
+	
+	\node (A5) [right of = ar2] {};
+	\node [relationship] (R5) [right=of A5] {} edge node[above]{$(1, \cN)$} (A5);
+	\node (B5) [right = of R5] {} edge node[above]{$(1, \cM)$} (R5);
+\end{tikzpicture}
+
+\end{document}
