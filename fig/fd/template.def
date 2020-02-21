@@ -1,0 +1,82 @@
+\renewcommand\familydefault{\sfdefault} % Default family: serif 
+\usepackage{tikz-dependency} % WARNING: we are using an EDITED version of this package.
+\usetikzlibrary{arrows.meta}
+\usepackage{soulutf8}
+\setul{}{1.1pt}
+
+% The following is to allow the use of \(…\) with the soul package.
+% cf. https://tex.stackexchange.com/a/443317/34551
+\usepackage{expl3}
+
+\ExplSyntaxOn
+\tl_new:N \__l_SOUL_argument_tl
+\cs_set_eq:Nc \SOUL_start:n { SOUL@start }
+\cs_generate_variant:Nn \SOUL_start:n { V }
+\cs_set_protected:cpn {SOUL@start} #1
+{
+\tl_set:Nn \__l_SOUL_argument_tl { #1 }
+\regex_replace_all:nnN
+{ \c{\(} (.*?) \c{\)} } % look for \(...\) (lazily)
+{ \cM\$ \1 \cM\$ }      % replace with $...$
+\__l_SOUL_argument_tl
+\SOUL_start:V \__l_SOUL_argument_tl % do the usual
+}
+\ExplSyntaxOff
+
+\begin{document}
+
+\depstyle{lvl}{%
+	edge height=2.5ex,
+	% edge unit distance=#1*2.5ex, % Another way of controlling the appearance of the edges.
+	edge below,
+	edge horizontal padding=0,
+	edge start y offset=-(#1-1)*3ex,
+	text only label, % No need for label for functional dependencies.
+	edge slant=0, % Right angles
+	rounded corners=0,
+    edge style={thick, >={Latex[width=2mm,length=2mm]}} % Change the style of the arrowheads.
+}
+
+% To deal with multiple parameters, in order to have a difference between the "level" (distance from node)
+% and the starting point of the arrows, we could start with something like:
+%\tikzset{/depgraph/lvl/.style 2 args={%<tikz options>},...}
+%\tikzstyle{lvl} = {%definition}
+%\depstyle{lvl}{%
+%	edge height=2.5ex,
+%edge unit distance=(#1-1)*3ex,, % Another way of controlling the appearance of the edges.
+%edge below,
+%edge horizontal padding=0,
+%edge start y offset=-(#1-1)*3ex,
+%text only label, % No need for label for functional dependencies.
+%edge slant=0, % Right angles
+%rounded corners=0,
+%edge style={thick, >={Latex[width=2mm,length=2mm]}} % Change the style of the arrowheads.
+%}
+%}
+
+\depstyle{FK}{%
+	color=red,
+	edge slant = 3pt,
+	rounded corners = 2
+	}
+
+\depstyle{none}{%
+	draw=none,
+	fill=none
+	}
+
+\tikzset{
+	matrix/.append style={column sep=0.4cm, row sep=2em} % Adding some distance between the attributes.
+}
+
+\tikzstyle{TxtBook}=[% Style to mimic the textbook Fundamentals of Database Systems.
+	column sep=0cm, % No distance between two attributes.
+	nodes={%
+		fill=gray!20,
+		draw=black,
+		inner xsep=3ex,
+		inner ysep=1ex
+	}
+]
+
+

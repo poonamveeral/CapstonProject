@@ -1,0 +1,16 @@
+\documentclass[margin=20pt]{standalone}
+\input{template.def}
+
+\begin{dependency}
+	\begin{deptext}[TxtBook] % Applying the TxtBook style.
+		|[none]| PRINT \(\big(\) \& Author \& Technique \& Title \& Price \& Size \& ShippingCost \& |[none]| \(\big)\)\\
+	\end{deptext}
+	\depedge[lvl=1, edge above]{2}{3}{}
+	\depedge[lvl=1, edge above]{4}{3}{}
+	\depedge[lvl=1]{2}{5}{}
+	\depedge[lvl=1]{4}{5}{}
+	\depedge[lvl=1]{6}{5}{}
+	\depedge[lvl=1, edge above]{6}{7}{}
+\end{dependency}
+
+\end{document}

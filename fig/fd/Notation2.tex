@@ -1,0 +1,17 @@
+\documentclass[margin=20pt]{standalone}
+\input{template.def}
+
+\begin{dependency}
+	\begin{deptext}[TxtBook] % Applying the TxtBook style.
+		|[none]| MARKER \(\big(\) \& Id \& Color \& Brand \& Owner \& |[none]| \(\big)\) \& |[none]| TEACHER \(\big(\) \& Name \& Office \& Phone \& |[none]| \(\big)\) \\
+	\end{deptext}
+	\depedge[lvl=1]{2}{3}{} % Edge are organized by level.
+	\depedge[lvl=1]{2}{4}{}
+	\depedge[lvl=1]{2}{5}{}
+	\depedge[lvl=1, edge above]{5}{3}{}
+	\depedge[lvl=1, edge above]{5}{4}{}
+	\depedge[lvl=1]{9}{8}{}
+	\depedge[lvl=1]{9}{10}{}
+\end{dependency}
+
+\end{document}

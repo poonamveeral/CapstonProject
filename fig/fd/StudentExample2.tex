@@ -1,0 +1,15 @@
+\documentclass[margin=20pt]{standalone}
+\input{template.def}
+
+\begin{dependency}
+	\begin{deptext}[TxtBook] % Applying the TxtBook style.
+		|[none]| STUDENT \(\big(\) \& \ul{Login} \& Name \& Major ) \& |[none]| \(\big)\) \& |[none]| HEAD \(\big(\) \& \ul{Major} \& Major\_Head \& |[none]| \(\big)\)\\
+	\end{deptext}
+	\depedge[lvl=1]{2}{4}{}
+	\depedge[lvl=1]{3}{4}{}
+	\depedge[lvl=1]{7}{8}{}
+%	\depedge[lvl=1, edge above]{4}{5}{}
+	\depedge[lvl=1, FK,	edge above]{7}{4}{}
+\end{dependency}
+
+\end{document}

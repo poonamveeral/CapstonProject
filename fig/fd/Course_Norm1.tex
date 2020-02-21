@@ -1,0 +1,16 @@
+\documentclass[margin=20pt]{standalone}
+\input{template.def}
+
+\begin{dependency}
+	\begin{deptext}[TxtBook] % Applying the TxtBook style.
+		|[none]| Course \(\big(\) \& \ul{Teacher} \& \ul{Code} \& Textbook \& Difficulty \& |[none]| \(\big)\) % New Line
+		\& |[none]| CreditHours\(\big(\) \& \ul{Code} \& Credit Hours\& |[none]| \(\big)\)\\
+	\end{deptext}
+	\depedge[lvl=1]{2}{5}{}
+	\depedge[lvl=1]{3}{5}{}
+	\depedge[lvl=1]{2}{4}{}
+	\depedge[lvl=1]{8}{9}{}
+	\depedge[lvl=1, FK,	edge above]{8}{3}{}
+\end{dependency}
+
+\end{document}

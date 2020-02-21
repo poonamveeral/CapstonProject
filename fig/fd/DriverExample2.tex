@@ -1,0 +1,16 @@
+\documentclass[margin=20pt]{standalone}
+\input{template.def}
+
+\begin{dependency}
+	\begin{deptext}[TxtBook] % Applying the TxtBook style.
+		|[none]| DRIVER \(\big(\) \& \ul{State} \& \ul{Driver\_Licence\_Num} \& Name) \& |[none]| \(\big)\) \& |[none]| GOVERNOR \(\big(\) \& \ul{State} \& Governor \& |[none]| \(\big)\)\\
+	\end{deptext}
+	\depedge[lvl=1]{2}{4}{}
+	\depedge[lvl=1]{3}{4}{}
+	\depedge[lvl=1]{7}{8}{}
+	\depedge[lvl=1, FK,	edge above]{7}{2}{}
+\end{dependency}
+
+
+
+\end{document}

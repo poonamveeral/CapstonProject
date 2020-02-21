@@ -1,0 +1,19 @@
+\documentclass[margin=20pt]{standalone}
+\input{template.def}
+
+\begin{dependency}
+	\begin{deptext}[TxtBook] % Applying the TxtBook style.
+		|[none]| TRAIN \(\big(\) \& Id \& Model \& |[none]| \(\big)\) \& |[none]| CONDUCTOR \(\big(\) \& Name \& Affected-to \& |[none]| \(\big)\) \\
+	\end{deptext}
+	\depedge[lvl=1]{2}{3}{}
+	\depedge[lvl=1]{6}{7}{}
+	\depedge[lvl=1, FK,	edge above]{7}{2}{}
+	%	\depedge[lvl=1]{2}{4}{}
+	%	\depedge[lvl=1]{2}{5}{}
+	%	\depedge[lvl=1, edge above]{5}{3}{}
+	%	\depedge[lvl=1, edge above]{5}{4}{}
+	%	\depedge[lvl=1]{9}{8}{}
+	%	\depedge[lvl=1]{9}{10}{}
+\end{dependency}
+
+\end{document}
