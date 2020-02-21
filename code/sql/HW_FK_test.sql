@@ -1,0 +1,16 @@
+/* code/sql/HW_FK_test.sql */
+
+DROP SCHEMA IF EXISTS HW_FK_test;
+
+CREATE SCHEMA HW_FK_test;
+
+USE HW_FK_test;
+
+CREATE TABLE TARGET(
+    Test VARCHAR(15) PRIMARY KEY
+);
+
+CREATE TABLE SOURCE(
+    Test VARCHAR(25),
+    FOREIGN KEY (Test) REFERENCES TARGET(Test)
+);
