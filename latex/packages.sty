@@ -1,0 +1,40 @@
+%%% Fonts
+%\setromanfont[Ligatures={Common,TeX}]{Linux  Libertine O}
+%\setmainfont[Ligatures={Common,TeX}]{Linux  Libertine O}
+%\setmonofont{Latin Modern Mono Light}
+%\setmonofont[SmallCapsFont={Latin Modern Mono Caps}]{Latin Modern Mono Light}
+%\newfontfamily\symb{DejaVu Sans}
+\setmonofont{FreeMono} 
+% Inconsolata : Unfortunately, bold, italics missing, and no "_" character.
+% Cf. https://www.levien.com/type/myfonts/inconsolata.html
+% and 
+% https://github.com/DeLaGuardo/Inconsolata-LGC
+% though.
+
+%\usepackage[table]{xcolor}
+\usepackage{xunicode}
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+
+%\usepackage[a-1b]{pdfx}
+
+%% Headers and footers
+\usepackage[headsepline]{scrlayer-scrpage}
+\automark{chapter}
+\automark*{section}
+\clearpairofpagestyles
+\ihead{\headmark}
+\ohead{\pagemark}
+\usepackage{geometry}
+
+%%%% hyperref setup
+
+\hypersetup{
+    bookmarksdepth=5,
+    pdfinfo={
+        pdfcopyright={Creative Commons Attribution 4.0 International License}
+    }
+}
+
+\renewcommand{\linethickness}{0.4pt} % Temporary, hot fix for pandoc.
+                                     % Cf. https://github.com/jgm/pandoc/issues/5841

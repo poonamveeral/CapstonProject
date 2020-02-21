@@ -1,0 +1,541 @@
+html {
+    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+    text-shadow: 1px 1px 1px #f7f7f7;
+    color: #000;
+    background: #F0F0F0;
+    background-image: url('data:image/png;base64,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');
+}
+
+li p{
+    text-indent: 0em;
+}
+header h2:before, header h3:before {
+    content: ""
+}
+header h2, header h3, header .subtitle, header .author{
+    display: inline;
+    font-size: 100%
+}
+a,
+div,
+label,
+p,
+img,
+span,
+section,
+h2,
+h3,
+li,
+pre {
+    box-sizing: border-box;
+    border-radius: 5px;
+    word-wrap: break-word;
+}
+.sourceCode{
+    text-indent: 0
+}
+.sourceCode:after {
+  content: attr(data-caption);
+  font-weight:bold;
+}
+a.sourceLine::before{
+    text-decoration: none;
+}
+kbd{ /* https://meta.superuser.com/q/4788 */
+    background-color:#f7f7f7;
+    border:1px solid #ccc;
+    border-radius:3px;
+    box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+    color:#333;
+    display:inline-block;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:11px;
+    line-height:1.4;
+    margin:0 .1em;
+    padding:.1em .6em;
+    text-shadow:0 1px 0 #fff;
+}
+section {
+    display: block;
+}
+strong {
+    font-weight: 700;
+}
+em {
+    font-style: italic;
+}
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+sup {
+    top: -0.5em;
+}
+sub {
+    bottom: -0.25em;
+}
+.smallcaps {
+    font-variant: small-caps;
+}
+p {
+    text-indent: 2em;
+}
+img {
+    display: inline;
+    border: 0;
+}
+ul {
+    list-style: none;
+}
+ul li:before {
+    content: "\2014\00a0";
+}
+abbr[title] {
+    border-bottom: 1px dotted;
+    border-radius: 0;
+}
+abbr:hover {
+    cursor: help;
+}
+a:focus {
+    outline: thin dotted;
+}
+a:focus,
+a:hover {
+    outline: 0;
+}
+a,
+label {
+    text-decoration: none;
+    background: transparent;
+    color: #2e4683;
+}
+a:hover, a:target{
+    background: linear-gradient(#cdcdcd, #bcbcbc);
+}
+td:empty:after {
+    content: '\274C';
+}
+h1, .title {
+    font-size: 200%;
+    margin: 0.9em;
+    margin-bottom: 0;
+    text-align: center;
+}
+h2, .subtitle {
+    font-size: 150%;
+    text-indent: 0.83em;
+    font-weight: 700;
+}
+h3 {
+    font-size: 112%;
+    text-indent: 2em;
+}
+h1,
+h2,
+h3,
+.subtitle{
+    display: block;
+    padding: 10px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+.subtitle{
+    color: #000;
+    text-shadow: 1px 1px 1px #fff;
+}
+table {
+    margin: 0 10%;
+    width: 80%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+td {
+    border-bottom: 1px solid #000;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    padding: 10px;
+    border-radius: 0;
+}
+td ul {
+    margin: 0;
+    padding: 0;
+}
+tr:nth-child(even) {
+    background: #D3D3D3;
+}
+tr:nth-child(odd) {
+    background: #eee;
+}
+thead {
+    background: #fff;
+}
+a[href^=http]:not([href*="http://spots.augusta.edu/caubert/"]):not([href*="https://aubert.perso.math.cnrs.fr"]):after {
+    content: "\2197";
+}
+/* Les liens commençant par http ↗ */
+a[href$=".pdf"]:after {
+    content: " (pdf)";
+}
+a[href$=".odt"]:after {
+    content: " (odt)";
+}
+a[href$=".docx"]:after {
+    content: " (docx)";
+}
+a[href$=".tex"]:after {
+    content: " (tex)";
+}
+a[href$=".zip"]:after {
+    content: " (zip)";
+}
+a[href$=".c"]:after {
+    content: " (C)";
+}
+a[href$=".java"]:after {
+    content: " (java)";
+}
+a[href$=".txt"]:after {
+    content: " (txt)";
+}
+a[href$=".sql"]:after {
+    content: " (sql)";
+}
+a[href$=".md"]:after {
+    content: " (md)";
+}
+nav{
+    top: 6em;
+    left:3em;
+    position: fixed;
+    display: block;
+}
+nav ul {
+    padding: 0;
+    margin: 0;
+}
+nav li a {
+    display: block;
+    padding: 8px;
+    font-size: larger;
+    text-align: left;
+}
+nav li:before {
+    content: "";
+}
+nav a:hover,
+nav a:focus {
+    padding: 8px 0 8px 1em;
+}
+nav a:before {
+    content: "\2192\00a0";
+    /* On mets une fleche → devant les liens du menu.*/
+}
+
+footer, #miscellaneous{
+    position: inherit;
+    color: #707070;
+    text-align: right;
+    font-size: smaller;
+    margin : 3em;
+}
+footer:before, #miscellaneous:before {
+    content: "\2766";
+    font-size: 400%;
+    text-align: center;
+    display: block;
+}
+footer h1, #miscellaneous h1, footer h2, #miscellaneous h2{
+display:none
+}
+.date{
+    position: absolute;
+    top: 2em;
+    right: 2em
+}
+.date:before{
+    content:"(Last modification: ";   
+}
+.date:after{
+    content:")";
+}
+hr {
+    border: 0;
+    margin: 0 0 6em;
+    clear: both;
+    /* Aldines ! ☙☙❧❧ */
+}
+hr:before {
+    display: block;
+    text-align: center;
+    font-size: 250%;
+    content: "\2619 \2619 \2767 \2767";
+}
+/* Aldines ! ❦ */
+h1,
+h2,
+h3,
+hr,
+blockquote,
+.subtitle{
+    font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+}
+h2:before {
+    content: "\261B \00a0";
+}
+h3:before {
+    content: "\261E \00a0";
+}
+pre {
+    background-color: #fff;
+    color: #000;
+    padding: 1.3em;
+    text-shadow: 1px 1px 1px #e7e7e7;
+    white-space: pre-wrap;
+    border: 1px solid #707070;
+}
+
+.contact li {
+	text-indent: -1em;
+	padding-left: 1em;
+}
+
+.contact li:before {
+	background-size: 1em;
+	background-repeat: no-repeat;
+	content: "";
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	padding: .1em;
+}
+
+.download{
+    box-shadow: 3px 3px 2px 2px #ccccc0;
+    border-radius: 8px;
+    border: 1px solid #b6b6a3;
+    text-decoration: none;
+    word-wrap: break-word;
+    display: inline-block;
+    margin: 1em;
+    padding: .5em;
+    position: relative;
+    background-color:white;
+}
+
+@media all and (max-width: 1024px), all and (max-height: 520px), handheld {
+    nav {
+		display: inline;
+		position: static;
+    }
+	body {
+		padding: 3% 10%;
+    }
+    h1 {
+		margin: 0;
+    }
+    a,
+    label {
+		padding: 4px;
+    }
+    #official_pic{
+    display:block;
+    margin: auto;
+    }
+}
+
+@media all and (min-width: 1024px) and (min-height: 520px) {
+	body {
+		margin: 2em auto;
+		max-width: 45vw;
+		padding:2em;
+	}
+    nav li a {
+		transition: padding 0.3s ease;
+    }
+    #official_pic{
+        float:right;
+    }
+}
+
+@media print {
+    body {
+	background : white;
+	width : auto;
+	padding : 0;
+	border : 0;
+	color : black;
+	border-radius : 0;
+	box-shadow : none;
+	word-spacing : 1px;
+	letter-spacing : 0.2px;
+	font : 12px/1.4em Arial, Helvetica, "Lucida Grande", serif;
+	float: none;
+	margin: 25mm;
+    }
+    nav, footer{
+	display : none;
+    }
+    a {
+	color : black;
+	text-decoration : none;
+	background : transparent;
+	font-weight : bold;
+    }
+    a[href^="#"], a[href^="hw"] {
+	font-weight : normal;
+    }
+    a[href^=http]:not([href*="http://spots.augusta.edu/caubert/"]):not([href*="https://aubert.perso.math.cnrs.fr"]):after {
+	content : " (" attr(href) ") ";
+	font-size : 90%;
+	font-weight : normal;
+    }    
+    a[href^="#"]:after, a[href^="mailto:"]:after, a[href^="hw"]:after, #google-scholar:after, #dissemin:after, #dblp:after, #orcid:after {
+	background-size: 0px;
+	width: auto;
+	height: auto;
+	margin:0;
+	content : " (" attr(href) ") ";
+    }
+    abbr{
+	text-decoration:none
+    }
+    abbr:after {
+	content : " (" attr(title) ") ";
+    }
+    hr {
+	display : none;
+    }
+    tr, td {
+	background : none transparent;
+	padding: 0px;
+    }
+    h1 {
+	font-size : 120%;
+    }
+    h2 {
+	font-size : 110%;
+    }
+    section {
+	padding : 0 0.1em;
+    }
+    table {
+	width : 100%;
+    }
+    p,
+    h1,
+    h2,
+    h3,
+    ul,
+    ol {
+	color: #000;
+	margin: auto;
+    }
+    p {
+	orphans: 3;
+	widows: 3;
+    }
+    h1,
+    h2,
+    h3,
+    caption {
+	page-break-after: avoid;
+    font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+    }
+}
+
+
+/* Testing purpose.*/
+
+/*
+dl, dt, dd{
+    border: 1px solid black;
+}
+*/
+
+
+/*
+ * Borrowed from 
+ * https://gist.github.com/killercup/5917178
+ */
+
+
+
+
+*::-moz-selection {
+  background: rgba(255, 255, 0, 0.3);
+  color: #000;
+}
+
+*::selection {
+  background: rgba(255, 255, 0, 0.3);
+  color: #000;
+}
+
+a::-moz-selection {
+  background: rgba(255, 255, 0, 0.3);
+  color: #0645ad;
+}
+
+a::selection {
+  background: rgba(255, 255, 0, 0.3);
+  color: #0645ad;
+}
+
+
+img {
+  max-width: 100%;
+}
+
+blockquote {
+  color: #666666;
+  margin: 0;
+  padding-left: 3em;
+  border-left: 0.5em #EEE solid;
+}
+
+figure {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+figure img {
+  border: none;
+  margin: 0 auto;
+}
+
+figcaption {
+  font-size: 0.8em;
+  font-style: italic;
+  margin: 0 0 .8em;
+}
+
+table {
+  margin-bottom: 2em;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+table th {
+  padding: .2em 1em;
+  background-color: #eee;
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+}
+
+table td {
+  padding: .2em 1em;
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  vertical-align: top;
+}
