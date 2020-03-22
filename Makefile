@@ -48,31 +48,31 @@ $(FIG_PDF): $(FIG_SOURCE)
 
 # Rule to compile to html
 
-html: lectures_notes.md
-	pandoc $(OPTIONSPANDOC) --css=style/style.css --toc-depth=1 --self-contained --default-image-extension=svg -o lectures_notes.html $<
+html: example.md
+	pandoc $(OPTIONSPANDOC) --css=style/style.css --toc-depth=1 --self-contained --default-image-extension=svg -o example.html $<
 
 
 # Rule to compile to odt
 
-odt: lectures_notes.md
-	pandoc  $(OPTIONSPANDOC) --default-image-extension=svg -o lectures_notes.odt $<
+odt: example.md
+	pandoc  $(OPTIONSPANDOC) --default-image-extension=svg -o example.odt $<
 
 
 # Rule to compile to pdf
 
-pdf: lectures_notes.md
-	pandoc $(OPTIONSPANDOC) --pdf-engine=xelatex --pdf-engine-opt=-shell-escape -V links-as-notes --default-image-extension=pdf -o lectures_notes.pdf $<
+pdf: example.md
+	pandoc $(OPTIONSPANDOC) --pdf-engine=xelatex --pdf-engine-opt=-shell-escape -V links-as-notes --default-image-extension=pdf -o example.pdf $<
 
 
 # Rule to compile to mediawiki
 
-mediawiki: lectures_notes.md
-	pandoc $(OPTIONSPANDOC) --default-image-extension=svg --to mediawiki -o lectures_notes.mw $<
+mediawiki: example.md
+	pandoc $(OPTIONSPANDOC) --default-image-extension=svg --to mediawiki -o example.mw $<
 
 
 # Rule to compile a temporary file, for testing purposes
 
-temp: temp.md
+temp: example.md
 	pandoc $(OPTIONSPANDOC) --default-image-extension=svg --css=style/style.css --toc-depth=1 --self-contained -o temp.html $<
 	pandoc $(OPTIONSPANDOC) --default-image-extension=svg -o temp.odt $<
 	pandoc $(OPTIONSPANDOC) --pdf-engine=xelatex --pdf-engine-opt=-shell-escape -V links-as-notes --default-image-extension=pdf -o temp.pdf $<
@@ -89,14 +89,6 @@ readme: ../README.md
 .PHONY: all
 all: pdf odt html
 
-# "Phony" rule to publish the compiled lecture notes and the README to the website.
-
-.PHONY: push
-push: 
-	cp lectures_notes.pdf ~/travail/upload/site/spots/db/ln/CSCI_3410_lecture_notes.pdf
-	cp lectures_notes.html ~/travail/upload/site/spots/db/ln/CSCI_3410_lecture_notes.html
-	cp lectures_notes.odt ~/travail/upload/site/spots/db/ln/CSCI_3410_lecture_notes.odt
-	cp ../README.html ~/travail/upload/site/spots/db/ln/README.html
 
 # "Phony" rule to remove the temporary files.
 
