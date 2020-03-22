@@ -49,7 +49,7 @@ This is an example that shows how to include a PDF image:
 
 NOTE: Use PDF for PDF docs
 
-![DriverExample2.pdf](fig/DriverExample2)\
+![DriverExample2.pdf](fig/fd/DriverExample2)\
 
 ## SVG example
 
@@ -58,7 +58,7 @@ This is an example that shows how to include a SVG image:
 
 NOTE: Use SVG for ODT and HTML docs
 
-![Course.svg](fig/Course)\
+![Course.svg](fig/fd/Course)\
 
 
 
