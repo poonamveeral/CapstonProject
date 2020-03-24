@@ -4,9 +4,9 @@
 
 To provide: 
 
-#. A minimal repository,
-#. An installation manual with: software requirements, compile a markdown file, and update pandoc dependencies, 
-#. A minimal example to test, edit, and generate a markdown file,
+1. A minimal repository,
+2. An installation manual with: software requirements, compile a markdown file, and update pandoc dependencies, 
+3. A minimal example to test, edit, and generate a markdown file,
 
 so that anyone willing to compile the lecture notes at <https://rocketgit.com/user/caubert/CSCI_3410> will be able to use this repository as a reference, test their installation, and then compile lectures notes if needed. 
 
@@ -28,4 +28,4 @@ The source code, hosted at <https://github.com/poonamveeral/GeneralRepo>, is org
 └── example.md              -- Sample file to test.
 ~~~ 
 
-Before compiling this document, you will need to review the manual.md document in the 'install' folder.
+Before compiling this document, you will need to review the manual.md document in the 'Course' folder.
