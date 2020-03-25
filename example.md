@@ -70,7 +70,7 @@ NOTE: Use SVG for ODT and HTML docs
 This is an example that shows how to include an entire code file from the 
 code folder:
 
-```{include=code/sql/HELLO_WORLD.sql}
+```{include=code/sql/HelloWorld.sql}
 ```
 
 ## Classes
@@ -81,36 +81,35 @@ This is an example that shows the .sqlmysql class:
 
 Using the exact code from above:
 
-```{.sqlmysql include=code/sql/HELLO_WORLD.sql}
+```{.sqlmysql include=code/sql/HelloWorld.sql}
 ```
 
 ### .java example
 
 This is an example that shows the .java class:
 
-```{.java .numberLines include=code/java/TestForNull.java}
+```{.java .numberLines include=code/java/HelloWorld.java}
 ```
 
 ### .numberlines example
 
 This is an example that shows how to use the .numberlines class:
 
-```{.sqlmysql .numberLines include=code/sql/HELLO_WORLD.sql}
+```{.sqlmysql .numberLines include=code/sql/HelloWorld.sql}
 ```
 
 ## Attributes 
 
 This is an example that shows how to use the startLine and endLine attributes:
 
-```{.sqlmysql .numberLines startLine=1 endLine=1 include=code/sql/HELLO_WORLD.sql}
+```{.sqlmysql .numberLines startLine=1 endLine=1 include=code/sql/HelloWorld.sql}
 
 
 This is an example that shows how to include an entire code file from the 
 code folder:
 
-```{include=code/sql/HELLO_WORLD.sql}
+```{include=code/sql/HelloWorld.sql}
 ```
-
 
 
 
