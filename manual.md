@@ -4,7 +4,7 @@ title: Instruction Manual
 
 <!---
 To compile this document:
-Scroll down to Compiling and Converting the Document-- choose either command(HTML, ODT, PDF), change 'example' file to 'manual' and follow instructions from there.  
+Scroll down to Compiling and Converting the Document-- choose either command (HTML, ODT, PDF), change 'example' file to 'manual' and follow instructions from there.  
 -->
 
 *Overview*
@@ -23,8 +23,8 @@ files and in online discussion forums.
 
 Markdown text is written and stored in plaintext file with a markdown extension (e.g. .md). Using a separate markdown application capable of processing markdown (we will be using Pandoc), it takes the markdown formatted text and converts it to HTML. The HTML file can then be viewable in a web browser or then converted to another file format, like PDF.
 
-![Markdown Conversion Process](img/markdownproc.png){ height=50%} \
-Figure 1.1: Markdown text file is converted and displayed in a web browser
+![Figure 1.1: Markdown text file is converted and displayed in a web browser](img/markdownproc.png){ height=50%}
+
 
 
 # Requirements
@@ -34,7 +34,7 @@ Figure 1.1: Markdown text file is converted and displayed in a web browser
 
 
 * Markdown
-	* For a basic tutorial visit:(<https://commonmark.org/help/tutorial/>)
+	* For a basic tutorial visit: <https://commonmark.org/help/tutorial/>
 
 Helpful Skills:
 
@@ -134,7 +134,7 @@ Type: `git clone https://github.com/poonamveeral/GeneralRepo`
 
 `pandoc test_pandoc-numbering.md --filter pandoc-numbering -o test_pandoc-numbering.html`
 
-	* If you're receiving errors, in your terminal, type: 
+* If you're receiving errors, in your terminal, type: 
 `export PATH=$PATH:/home/username/.local/bin`
 * In the install folder, you should see a file called "test_pandoc-numbering.html"
 
@@ -152,6 +152,7 @@ Type: `git clone https://github.com/poonamveeral/GeneralRepo`
 * In the install folder, you should see a file called "test_pandoc-citeproc.html"
 
 If you're receiving "Could not find executable pandoc-include-code"
+
 * Go to the root folder, and open the ".bashrc" file with a text editor
 * Add the line below to the bottom of the file and click "save" to save the file:
 
@@ -176,11 +177,11 @@ You want each folder to contain:
 ```{.plain}
 .
 ├── install/                -- How to install requirements to compile the document.
-│   ├── .md files           -- To test Pandoc
+│   └── .md files           -- To test Pandoc
 ├── bib/		    -- References (including reference to the document). 
-│   ├── .bib files          -- To store citations.
+│   └── .bib files          -- To store citations.
 ├── code/		    -- Source code included in the document.
-│   ├── code files          -- (E.g. .java, .xml, .sql)
+│   └── code files          -- (E.g. .java, .xml, .sql)
 ├── fig/		    -- Source code for various figures used in the document.
 ├── img/	            -- Various image files itegrated in the document.
 ├── latex/		    -- Latex configuration file.
@@ -219,10 +220,10 @@ For our example, in your terminal, while in the directory of where your markdown
 or
 
 ```
-pandoc --toc --filter pandoc-numbering --filter pandoc-citeproc --filter pandoc-include-code \ 
---top-level-division=chapter -M date="$(LANG=en_us_88591 date '+%B  %e, %Y (%r)')" \
---pdf-engine=xelatex --pdf-engine-opt=-shell-escape -V links-as-notes \ 
---default-image-extension=pdf -o example.pdf example.md \
+pandoc --toc --filter pandoc-numbering --filter pandoc-citeproc --filter pandoc-include-code \
+--top-level-division=chapter -M date="$(LANG=en_us_88591 date '+%B %e, %Y (%r)')" \
+--pdf-engine=xelatex --pdf-engine-opt=-shell-escape -V links-as-notes \
+--default-image-extension=pdf -o example.pdf example.md
 ```
 
 To check if the results worked, from your desktop, navigate to your "Course" folder. You should see a new file called "example.pdf".
@@ -235,9 +236,9 @@ For our example, in your terminal, while in the directory of where your markdown
 or
 
 ```
-pandoc  --toc --filter pandoc-numbering --filter pandoc-citeproc --filter pandoc-include-code \ 
---top-level-division=chapter -M date="$(LANG=en_us_88591 date '+%B  %e, %Y (%r)')" \ 
---default-image-extension=svg -o example.odt example.md \
+pandoc  --toc --filter pandoc-numbering --filter pandoc-citeproc --filter pandoc-include-code \
+--top-level-division=chapter -M date="$(LANG=en_us_88591 date '+%B %e, %Y (%r)')" \
+--default-image-extension=svg -o example.odt example.md
 ```
 
 To check if the results worked, from your desktop, navigate to your "Course" folder. You should see a new file called "example.odt".
@@ -251,10 +252,10 @@ For our example, in your terminal, while in the directory of where your markdown
 or
 
 ```
-pandoc --toc --filter pandoc-numbering --filter pandoc-citeproc --filter pandoc-include-code \ 
---top-level-division=chapter -M date="$(LANG=en_us_88591 date '+%B  %e, %Y (%r)')" \ 
---css=style/style.css --toc-depth=1 --self-contained --default-image-extension=svg \ 
--o example.html example.md \
+pandoc --toc --filter pandoc-numbering --filter pandoc-citeproc --filter pandoc-include-code \
+--top-level-division=chapter -M date="$(LANG=en_us_88591 date '+%B %e, %Y (%r)')" \
+--css=style/style.css --toc-depth=1 --self-contained --default-image-extension=svg \
+-o example.html example.md
 ```
 
 where "style.css" is the name of your css file.
